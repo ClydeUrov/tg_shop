@@ -43,7 +43,7 @@ def add_to_cart(pcs, prod_id, user_id, prod_name):
         }
     }
     print(data)
-    url = f'https://useast.api.elasticpath.com/pcm/carts/{user_id}/items'
+    url = f'https://api.moltin.com/v2/carts'
     response = requests.post(url=url, headers=headers, json=data)
     print(response.json())
 
