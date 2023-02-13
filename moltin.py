@@ -45,11 +45,14 @@ def add_to_cart(pcs, prod_id, user_id, prod_name):
     print(data)
     url = f'https://api.moltin.com/v2/carts'
     response = requests.post(url=url, headers=headers, json=data)
-    print(response.json())
+    pprint(response.json())
+    url = 'https://api.moltin.com/v2/carts/'
+    response = requests.get(url=url, headers=headers)
+    pprint(response.json())
 
 pcs = 1
 products = fetch_products()
-prod_id = fetch_products()[0]['id']
+prod_id = products[1]['id']
 user_id = os.environ["CLIENT_ID"]
-prod_name = fetch_products()[0]['attributes']['name']
+prod_name = products[1]['attributes']['name']
 add_to_cart(pcs, prod_id, user_id, prod_name)
